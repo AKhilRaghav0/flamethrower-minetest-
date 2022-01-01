@@ -20,9 +20,6 @@ minetest.register_craftitem("flamethrower:tool", {
 		local minvel = {x=vel.x*6-0.5, y=vel.y*6-0.5, z=vel.z*6-0.5}
 		local maxvel = {x=vel.x*6+0.5, y=vel.y*6+0.5, z=vel.z*6+0.5}
 
-		local stack = itemstack("flamethrower:tool")
-		local max_use = 60
-		stack:add_wear(65535 / (max_uses - 1)
 		minetest.add_particlespawner(300, 0.2,
 			minp, maxp,
 			minvel, maxvel,
@@ -30,17 +27,10 @@ minetest.register_craftitem("flamethrower:tool", {
 			1.2, 2,
 			0.1, 1,
 			false, "fire_basic_flame.png")
-minetest.register_craft({
-	type = "shaped"
-	output = "Flamethrower:tool 1"
-	recipe = {
-     {"fire:flint_and_steel","",""},
-     {"basic_materials:steel_strip","technic:sulfur_lump",""}
-     {"","technic:sulfur_lump","basic_materials:steel_sstrip"}
-	}
-	
-	
-)
+		--max use
+		local stack = ItemStack("flamethrower:tool")
+		local max_use = 60
+		stack:add_wear(65535 / (max_use - 1))
 		-- Make stuff burn
 		local np = minp
 		for i = 0, 5 do
@@ -54,5 +44,17 @@ minetest.register_craft({
 				minetest.env:set_node(np, {name="default:dirt"})
 			end
 		end
-	end
+	end,
 })
+
+minetest.register_craft({
+	type = "shaped",
+	output = "Flamethrower:tool 1",
+	recipe = {
+		{"fire:flint_and_steel","",""},
+		{"basic_materials:steel_strip","technic:sulfur_lump",""},
+		{"","technic:sulfur_lump","basic_materials:steel_sstrip"},
+	},
+})
+
+
