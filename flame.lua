@@ -2,7 +2,7 @@
 -- originally by AKhilRaghav0
 -- rewritten by TechDudie
 
-local addvectors (v1, v2)
+local addvectors(v1, v2)
   return {x=v1.x+v2.x, y=v1.y+v2.y, z=v1.z+v2.z}
 end
 
@@ -47,7 +47,7 @@ minetest.register_tool("flamethrower:flamethrower", {
     if not minetest.is_creative_enabled(player_name) then
       -- Wear tool
       local wdef = itemstack:get_definition()
-      itemstack:add_wear(1000)
+      itemstack:add_wear(256)
       -- Tool break sound
       if itemstack:get_count() == 0 and wdef.sound and wdef.sound.breaks then
         minetest.sound_play(wdef.sound.breaks, {pos = sound_pos, gain = 0.5}, true)
